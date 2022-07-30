@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- BOXICONS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <title>Countdown</title>
+</head>
+<body>
+    <!-- Form -->
+    <div class="form_box">
+        <h1>Crie uma contagem regressiva</h1>
+        <form action="#">
+            <label for="date">Data e Hora</label>
+            <input type="datetime-local" name="date" id="date">
+            <div class="error_txt">Campo em branco!</div>
+            <button class="btn" type="submit">Contar</button>
+        </form>
+    </div>
+    <!-- Countdown -->
+    <div class="count_box">
+        <div class="title_count"><h2>Contando...</h2></div>    
+        <div class="countdown">
+            <div id="day"></div>
+            <div id="hour"></div>
+            <div id="minute"></div>
+            <div id="second"></div>
+        </div>
+        <div class="infor_btn">
+            <div class="complete_text">O grande dia chegou!</div>
+            <div class="btn_count">
+                <button class="btn_restart">Reiniciar</button>
+            </div> 
+        </div>
+    </div>
+    <!-- JS -->
+    <script src="js/countdown.js"></script>
+</body>
+</html>

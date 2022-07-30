@@ -1,0 +1,296 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap");
+/*=============== GERAIS ===============*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+/*=============== VARIAVEIS CSS ===============*/
+:root{
+    --hue: 174;
+    --sat: 63%;
+    --first-color: hsl(var(--hue), var(--sat), 40%);
+    --first-color-alt: hsl(var(--hue), var(--sat), 36%);
+    --title-color: hsl(var(--hue), 12%, 15%);
+    --text-color: hsl(var(--hue), 8%, 35%);
+    --body-color: hsl(var(--hue), 100%, 99%);
+    --bg-color: hsl(var(--hue), 79%, 21%);
+
+    font-size: 62.5%; /* 1rem = 10px */
+}
+/*=============== LAYOUT ===============*/
+body{
+    background: var(--body-color);
+
+}
+.showBodyCount{
+    min-height: 100vh;
+    background:url(https://images.pexels.com/photos/2433467/pexels-photo-2433467.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.form_box,
+.count_box{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 1px 12px hsla(var(--hue), var(--sat), 15%, 0.15);
+    transition: all 0.3s ease;  
+}
+.count_box.activeCount{
+    z-index: 5;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
+}
+/*=============== FORMBX ===============*/
+.form_box{
+    width: 400px;
+    padding: 20px 30px 50px 30px;
+}
+.form_box h1{
+    color: var(--title-color);
+    text-align: center;
+    font-size: 2.3rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+.form_box form{
+    width: 100%; 
+}
+form label{
+    display: block;
+    font-size: 1.6rem;
+    margin-bottom: 5px;
+}
+form input{
+    width: 100%;
+    height: 45px;
+    font-size: 1.4rem;
+    padding: 0 15px;
+    margin-bottom: 8px;
+    background: none;
+    outline: none;
+    border: 1px solid #bfbfbf;
+    border-radius: 3px;
+    border-bottom-width: 2px;
+    cursor: pointer;   
+}
+
+input.error{
+    border: 1px solid #ff0055;  
+}
+.error_txt{
+    font-size: 1.4rem;
+    opacity: 0;
+    color: #ff0055;
+    margin-bottom: 8px;
+}
+.error_txt.showErrorTxt{
+    opacity: 1;
+}
+input:focus{
+    border: 1px solid var(--first-color);
+}
+form .btn{
+    width: 100%;
+    height: 45px;
+    background: var(--first-color);
+    color: #fff;
+    padding: 10px;
+    outline: none;
+    border: none;
+    border-radius: 3px;
+    font-size: 1.8rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: .3s;
+}
+.btn:hover{
+    background: var(--first-color-alt);
+}
+/*=============== COUNTDOWN ===============*/
+.count_box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px 30px 70px 30px;
+    border-radius: 5px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(0.9);
+    
+}
+.count_box .title_count{
+  position: relative;
+  margin-bottom: 30px;
+}
+.title_count::before{
+  content: " ";
+  position: absolute;
+  left: 22px;
+  bottom: -20px;
+  width: 100px;
+  height: 4px;
+  border-radius: 3px;
+  background: var(--title-color);
+}
+.title_count h2{
+    font-size: 2.8rem;
+}
+.countdown{
+    display: flex;
+    margin-bottom: 45px;
+}
+.countdown div{
+    position: relative;
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    color: var(--title-color);
+    margin: 0 15px;
+    font-size: 3.6rem;
+    font-weight: 500;
+}
+.countdown div::before{
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    left: 0;
+    width: 100%;
+    height: 35px;
+    background: var(--first-color);
+    color: var(--title-color);
+    font-size: 1.8rem;
+    /* font-size: 0.48em; */
+    line-height: 35px;
+    font-weight: 300;
+}
+.countdown #day::before{
+    content: 'Dias';
+}
+.countdown #hour::before{
+    content: 'Horas';
+}
+.countdown #minute::before{
+    content: 'Minutos';
+}
+.countdown #second::before{
+    content: 'Segundos';
+}
+.count_box .infor_btn{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 3rem;
+}
+.infor_btn .complete_text{
+    font-size: 2rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--title-color);
+    display: flex;
+    align-items: center;
+    opacity: 0;
+}
+.infor_btn .complete_text.showCompleteText{
+    opacity: 1;
+}
+.complete_text span{
+    margin-left: 5px;
+}
+.complete_text span i {
+    font-size: 2.8rem;
+    color: var(--first-color);
+}
+.btn_count .btn_restart{
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    background: var(--title-color);
+    padding: 10px 20px;
+    outline: none;
+    border: none;
+    border-radius: 8px;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.btn_restart{
+    background: var(--text-color);
+}
+@media (max-width:601px){
+    .count_box{
+        width: 84%;
+    }
+    .title_count h2{
+        font-size: 2.6rem;
+    }
+    .title_count::before{
+        left: 16px;
+    }
+    .countdown div{
+        width: 98px;
+        margin: 2px;
+        font-size: 2.4rem; 
+    }
+    .countdown div::before{
+        font-size: 1.6rem;
+    }
+    .infor_btn .complete_text{
+        font-size: 1.5rem;
+    }
+}
+@media (max-width:480px){
+    .form_box{
+        width: 82%;
+    }
+    .form_box h1{
+        font-size: 1.9rem;
+    }
+    form label{
+        font-size: 1.4rem;
+    }
+    form input{
+        font-size: 1.4rem;
+    }
+    .error_txt{
+        font-size: 1.2rem;
+    }
+    form .btn{
+        font-size: 1.6rem;
+    }
+    .count_btn{
+        width: 90%;
+    }
+    .title_count h2{
+        font-size: 2.4rem;
+    }
+    .title_count::before{
+        left: 16px;
+    }
+    .countdown div{
+        width: 78px;
+        height: 100px;
+        font-size: 2rem; 
+    }
+    .countdown div::before{
+        font-size: 1.4rem;
+    }
+    .infor_btn .complete_text{
+        font-size: 1.4rem;
+      
+    }
+}
+
